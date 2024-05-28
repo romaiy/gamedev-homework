@@ -4,3 +4,8 @@
 
 [node name="User" type="Node2D"]
 script = ExtResource("1_12vdd")
+
+[node name="WeedRechargeTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="WeedRechargeTimer" to="." method="_on_weed_recharge_timer_timeout"]

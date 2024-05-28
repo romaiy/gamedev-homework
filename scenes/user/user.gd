@@ -4,8 +4,13 @@ signal target_cell_change
 signal user_action_change
 signal user_clicked
 
+signal user_weeded
+
+var max_weed_charges = 5
+var current_weed_charges = max_weed_charges
+
 func _ready():
-	pass 
+	user_weeded.emit(current_weed_charges)
 
 func _process(_delta):
 	if Input.is_action_pressed("plant"):
@@ -40,7 +45,19 @@ func handlePlant(pos: Vector2):
 	user_clicked.emit(pos)
 	
 func handleWeed(pos: Vector2):
+	if current_weed_charges == 0: return
+	current_weed_charges -= 1
+	$WeedRechargeTimer.start()
+	user_weeded.emit(current_weed_charges)
 	user_clicked.emit(pos)
 
 func handleWater(pos: Vector2):
 	user_clicked.emit(pos)
+
+
+func _on_weed_recharge_timer_timeout():
+	current_weed_charges += 1
+	user_weeded.emit(current_weed_charges)
+	
+	if current_weed_charges < max_weed_charges:
+		$WeedRechargeTimer.start()

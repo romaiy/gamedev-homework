@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddc30ltvi7iru"]
+[gd_scene load_steps=7 format=3 uid="uid://ddc30ltvi7iru"]
 
 [ext_resource type="Texture2D" uid="uid://decxtvnot8h2g" path="res://assets/icons/plant.png" id="1_itinc"]
 [ext_resource type="Texture2D" uid="uid://d3l6mtf65dv47" path="res://assets/icons/weed.png" id="1_ob66n"]
+[ext_resource type="Script" path="res://scenes/hud/hud.gd" id="1_wvdvv"]
 [ext_resource type="Texture2D" uid="uid://ckjjvn6l3ma1y" path="res://assets/icons/text-wrapper.png" id="2_g6bpl"]
 [ext_resource type="Texture2D" uid="uid://bise35vnsy7sf" path="res://assets/icons/water.png" id="3_1r50j"]
 [ext_resource type="FontFile" uid="uid://yyihm3blh2ec" path="res://assets/fonts/Kurochkalapkoi.ttf" id="3_ha6ov"]
 
 [node name="Hud" type="Node2D"]
+script = ExtResource("1_wvdvv")
 
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 
@@ -24,7 +26,7 @@ position = Vector2(785, 775)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_g6bpl")
 
-[node name="Label" type="Label" parent="CanvasGroup/plant/Text-wrapper"]
+[node name="Q" type="Label" parent="CanvasGroup/plant/Text-wrapper"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -59,7 +61,7 @@ position = Vector2(785, 775)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_g6bpl")
 
-[node name="Label" type="Label" parent="CanvasGroup/weed/Text-wrapper"]
+[node name="W" type="Label" parent="CanvasGroup/weed/Text-wrapper"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -80,6 +82,16 @@ text = "W"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ChargesCount" type="Label" parent="CanvasGroup/weed"]
+offset_left = 390.0
+offset_top = -280.0
+offset_right = 509.0
+offset_bottom = 116.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ha6ov")
+theme_override_font_sizes/font_size = 330
+text = "0"
+
 [node name="water" type="Node2D" parent="CanvasGroup"]
 position = Vector2(460, 870)
 scale = Vector2(0.2, 0.2)
@@ -94,7 +106,7 @@ position = Vector2(785, 775)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_g6bpl")
 
-[node name="Label" type="Label" parent="CanvasGroup/water/Text-wrapper"]
+[node name="E" type="Label" parent="CanvasGroup/water/Text-wrapper"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
