@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnpo6kv5on1q8"]
+[gd_scene load_steps=5 format=3 uid="uid://cnpo6kv5on1q8"]
 
 [ext_resource type="Script" path="res://scenes/main/grid.gd" id="1_13blv"]
 [ext_resource type="PackedScene" uid="uid://bc7mcapulja5u" path="res://scenes/user/user.tscn" id="2_m5r1a"]
 [ext_resource type="PackedScene" uid="uid://ddtylbqwpg8gp" path="res://scenes/farm/farm.tscn" id="2_o1oq7"]
+[ext_resource type="PackedScene" uid="uid://ddc30ltvi7iru" path="res://scenes/hud/hud.tscn" id="4_kf115"]
 
 [node name="world" type="Node2D"]
 
@@ -12,6 +13,8 @@
 
 [node name="grid" type="Node2D" parent="."]
 script = ExtResource("1_13blv")
+
+[node name="Hud" parent="." instance=ExtResource("4_kf115")]
 
 [connection signal="target_cell_change" from="user" to="grid" method="_on_user_target_cell_change"]
 [connection signal="user_action_change" from="user" to="grid" method="_on_user_user_action_change"]

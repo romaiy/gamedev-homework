@@ -1,0 +1,116 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddc30ltvi7iru"]
+
+[ext_resource type="Texture2D" uid="uid://decxtvnot8h2g" path="res://assets/icons/plant.png" id="1_itinc"]
+[ext_resource type="Texture2D" uid="uid://d3l6mtf65dv47" path="res://assets/icons/weed.png" id="1_ob66n"]
+[ext_resource type="Texture2D" uid="uid://ckjjvn6l3ma1y" path="res://assets/icons/text-wrapper.png" id="2_g6bpl"]
+[ext_resource type="Texture2D" uid="uid://bise35vnsy7sf" path="res://assets/icons/water.png" id="3_1r50j"]
+[ext_resource type="FontFile" uid="uid://yyihm3blh2ec" path="res://assets/fonts/Kurochkalapkoi.ttf" id="3_ha6ov"]
+
+[node name="Hud" type="Node2D"]
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+
+[node name="plant" type="Node2D" parent="CanvasGroup"]
+position = Vector2(40, 870)
+scale = Vector2(0.2, 0.2)
+metadata/_edit_group_ = true
+
+[node name="sprite" type="Sprite2D" parent="CanvasGroup/plant"]
+position = Vector2(460, 475)
+texture = ExtResource("1_itinc")
+
+[node name="Text-wrapper" type="Sprite2D" parent="CanvasGroup/plant"]
+position = Vector2(785, 775)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_g6bpl")
+
+[node name="Label" type="Label" parent="CanvasGroup/plant/Text-wrapper"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -635.833
+offset_top = -823.333
+offset_right = -420.833
+offset_bottom = -343.333
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ha6ov")
+theme_override_font_sizes/font_size = 330
+text = "Q"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="weed" type="Node2D" parent="CanvasGroup"]
+position = Vector2(250, 870)
+scale = Vector2(0.2, 0.2)
+metadata/_edit_group_ = true
+
+[node name="sprite" type="Sprite2D" parent="CanvasGroup/weed"]
+position = Vector2(455, 481)
+texture = ExtResource("1_ob66n")
+
+[node name="Text-wrapper" type="Sprite2D" parent="CanvasGroup/weed"]
+position = Vector2(785, 775)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_g6bpl")
+
+[node name="Label" type="Label" parent="CanvasGroup/weed/Text-wrapper"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -615.0
+offset_top = -810.833
+offset_right = -379.0
+offset_bottom = -330.833
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ha6ov")
+theme_override_font_sizes/font_size = 330
+text = "W"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="water" type="Node2D" parent="CanvasGroup"]
+position = Vector2(460, 870)
+scale = Vector2(0.2, 0.2)
+metadata/_edit_group_ = true
+
+[node name="sprite" type="Sprite2D" parent="CanvasGroup/water"]
+position = Vector2(455, 481)
+texture = ExtResource("3_1r50j")
+
+[node name="Text-wrapper" type="Sprite2D" parent="CanvasGroup/water"]
+position = Vector2(785, 775)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_g6bpl")
+
+[node name="Label" type="Label" parent="CanvasGroup/water/Text-wrapper"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -635.833
+offset_top = -806.667
+offset_right = -420.833
+offset_bottom = -326.667
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ha6ov")
+theme_override_font_sizes/font_size = 330
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1

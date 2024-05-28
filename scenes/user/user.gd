@@ -10,15 +10,15 @@ func _ready():
 func _process(_delta):
 	if Input.is_action_pressed("plant"):
 		Main.current_action = 'plant'
-		user_action_change.emit('plant')
+		user_action_change.emit()
 		
 	if Input.is_action_pressed("weed"):
 		Main.current_action = 'weed'
-		user_action_change.emit('weed')
+		user_action_change.emit()
 		
 	if Input.is_action_pressed("water"):
 		Main.current_action = 'water'
-		user_action_change.emit('water')
+		user_action_change.emit()
 
 func _input(event) -> void:
 	if event is InputEventMouseMotion:
