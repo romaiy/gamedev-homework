@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Main="*res://scenes/main/main.gd"
+IdGenerator="*res://shared/sripts/idGenerator.gd"
 
 [display]
 

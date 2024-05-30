@@ -17,6 +17,13 @@ const action_colors = {
 	'disabled': '#bdbdbd'
 }
 
+const growth_cycle_colors = {
+	0: '#ccffcc',
+	1: '#80ff80',
+	2: '#48ad48',
+	3: '#009632'
+}
+
 var current_action = 'plant'
 
 var is_out_of_grid = false

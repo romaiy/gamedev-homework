@@ -34,7 +34,8 @@ func _input(event) -> void:
 		target_cell_change.emit(event.position)
 		
 	elif Input.is_action_pressed("left_mouse_down"):
-		handleButtonClick(event.position)
+		if "position" in event:
+			handleButtonClick(event.position)
 		
 func handleButtonClick(pos: Vector2):
 	var x = floor(pos.x/Main.cell_size.x)

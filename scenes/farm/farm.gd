@@ -22,14 +22,10 @@ func _draw() -> void:
 			draw_rect(
 			Rect2(vector, Main.cell_size), 
 			Main.action_colors.weed)
-		for vector in plants_beds:
-			draw_rect(
-			Rect2(vector, Main.cell_size), 
-			Main.action_colors.plant)
-		for vector in watered_beds:
-			draw_rect(
-			Rect2(vector, Main.cell_size), 
-			Main.action_colors.water)
+		#for vector in watered_beds:
+			#draw_rect(
+			#Rect2(vector, Main.cell_size), 
+			#Main.action_colors.water)
 
 func add_active_cell(cell:Vector2):
 	active_cell_points = Main.cell2pixel(cell)
@@ -42,13 +38,17 @@ func add_active_cell(cell:Vector2):
 	queue_redraw()
 
 func add_plant():
-	if (!plants_beds.has(active_cell_points) and weeded_beds.has(active_cell_points)):
-		plants_beds.append(active_cell_points)
-		action_is_done.emit('plant')
+	var plants_coords = plants_beds.map(func(plant): return plant.coords)
+	
+	if (!plants_coords.has(active_cell_points) and weeded_beds.has(active_cell_points)):
+		var id = IdGenerator.generate_id()
+		var plant = plant_class.new(id, active_cell_points.x, active_cell_points.y)
 		
-		if plant_class:
-			var plant = plant_class.new(active_cell_points.x, active_cell_points.y)
-			add_child(plant)
+		plants_beds.append({'coords': active_cell_points, 'id': id, 'plant': plant})
+		
+		add_child(plant)
+		
+		action_is_done.emit('plant')
 
 func add_weed():
 	if (!weeded_beds.has(active_cell_points)):
@@ -56,6 +56,9 @@ func add_weed():
 		action_is_done.emit('weed')
 
 func add_water():
-	if (!watered_beds.has(active_cell_points)):
-		watered_beds.append(active_cell_points)
-		action_is_done.emit('water')
+	var plants_coords = plants_beds.map(func(plant): return plant.coords)
+	
+	if (plants_coords.has(active_cell_points)):
+		var index = plants_coords.find(active_cell_points)
+		plants_beds[index].plant.water()
+	action_is_done.emit('water')

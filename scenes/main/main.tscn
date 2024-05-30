@@ -20,3 +20,4 @@ script = ExtResource("1_13blv")
 [connection signal="target_cell_change" from="user" to="grid" method="_on_user_target_cell_change"]
 [connection signal="user_action_change" from="user" to="grid" method="_on_user_user_action_change"]
 [connection signal="user_clicked" from="user" to="farm" method="add_active_cell"]
+[connection signal="action_is_done" from="farm" to="user" method="_on_farm_action_is_done"]
