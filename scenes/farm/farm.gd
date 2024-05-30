@@ -1,8 +1,12 @@
 extends Node2D
 
+@export var plant_class: Resource
+
 var weeded_beds = []
 var plants_beds = []
 var watered_beds = []
+
+signal action_is_done
 
 var active_cell_points = null
 
@@ -40,11 +44,18 @@ func add_active_cell(cell:Vector2):
 func add_plant():
 	if (!plants_beds.has(active_cell_points) and weeded_beds.has(active_cell_points)):
 		plants_beds.append(active_cell_points)
+		action_is_done.emit('plant')
+		
+		if plant_class:
+			var plant = plant_class.new(active_cell_points.x, active_cell_points.y)
+			add_child(plant)
 
 func add_weed():
 	if (!weeded_beds.has(active_cell_points)):
 		weeded_beds.append(active_cell_points)
+		action_is_done.emit('weed')
 
 func add_water():
 	if (!watered_beds.has(active_cell_points)):
 		watered_beds.append(active_cell_points)
+		action_is_done.emit('water')

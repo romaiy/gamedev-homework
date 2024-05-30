@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddtylbqwpg8gp"]
+[gd_scene load_steps=3 format=3 uid="uid://ddtylbqwpg8gp"]
 
 [ext_resource type="Script" path="res://scenes/farm/farm.gd" id="1_ge8pg"]
+[ext_resource type="Script" path="res://scenes/plant/plant.gd" id="2_hxy5e"]
 
 [node name="Farm" type="Node2D"]
+position = Vector2(0, -2)
 script = ExtResource("1_ge8pg")
+plant_class = ExtResource("2_hxy5e")
 
-[node name="WaterDryingTimer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="."]

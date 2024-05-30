@@ -30,8 +30,6 @@ func _process(_delta):
 func _draw() -> void:
 	var screen_size: Vector2 = get_viewport_rect().size
 	
-	var rect_position: Vector2 = (screen_size - grid_size) / 2
-	
 	draw_rect(Rect2(Vector2(0, 0), screen_size), "#FFFFFF")
 	
 	for i in range(cell_amount.x + 1):

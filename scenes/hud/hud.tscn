@@ -1,32 +1,103 @@
-[gd_scene load_steps=7 format=3 uid="uid://ddc30ltvi7iru"]
+[gd_scene load_steps=10 format=3 uid="uid://ddc30ltvi7iru"]
 
 [ext_resource type="Texture2D" uid="uid://decxtvnot8h2g" path="res://assets/icons/plant.png" id="1_itinc"]
 [ext_resource type="Texture2D" uid="uid://d3l6mtf65dv47" path="res://assets/icons/weed.png" id="1_ob66n"]
 [ext_resource type="Script" path="res://scenes/hud/hud.gd" id="1_wvdvv"]
 [ext_resource type="Texture2D" uid="uid://ckjjvn6l3ma1y" path="res://assets/icons/text-wrapper.png" id="2_g6bpl"]
+[ext_resource type="Texture2D" uid="uid://bougufx8c5pgv" path="res://assets/icons/small-plant.png" id="2_jpycv"]
 [ext_resource type="Texture2D" uid="uid://bise35vnsy7sf" path="res://assets/icons/water.png" id="3_1r50j"]
 [ext_resource type="FontFile" uid="uid://yyihm3blh2ec" path="res://assets/fonts/Kurochkalapkoi.ttf" id="3_ha6ov"]
+[ext_resource type="Texture2D" uid="uid://c700bvk6xe2rw" path="res://assets/icons/small-weed.png" id="3_yy330"]
+[ext_resource type="Texture2D" uid="uid://dfmi1yb5lnd6c" path="res://assets/icons/small-water.png" id="4_2dq35"]
 
-[node name="Hud" type="Node2D"]
+[node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_wvdvv")
 
-[node name="CanvasGroup" type="CanvasGroup" parent="."]
+[node name="Header" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
 
-[node name="plant" type="Node2D" parent="CanvasGroup"]
-position = Vector2(40, 870)
+[node name="plant" type="Node2D" parent="Header"]
+position = Vector2(64, 64)
+scale = Vector2(0.1, 0.1)
+
+[node name="Small-plant" type="Sprite2D" parent="Header/plant"]
+texture = ExtResource("2_jpycv")
+
+[node name="ChargesCount" type="Label" parent="Header/plant"]
+offset_left = 630.0
+offset_top = -310.0
+offset_right = 1422.0
+offset_bottom = 230.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ha6ov")
+theme_override_font_sizes/font_size = 450
+text = "0 / 5"
+
+[node name="weed" type="Node2D" parent="Header"]
+position = Vector2(64, 160)
+scale = Vector2(0.1, 0.1)
+
+[node name="Small-weed" type="Sprite2D" parent="Header/weed"]
+texture = ExtResource("3_yy330")
+
+[node name="ChargesCount" type="Label" parent="Header/weed"]
+offset_left = 630.0
+offset_top = -310.0
+offset_right = 1422.0
+offset_bottom = 230.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ha6ov")
+theme_override_font_sizes/font_size = 450
+text = "0 / 5"
+
+[node name="water" type="Node2D" parent="Header"]
+position = Vector2(64, 256)
+scale = Vector2(0.1, 0.1)
+
+[node name="Small-water" type="Sprite2D" parent="Header/water"]
+texture = ExtResource("4_2dq35")
+
+[node name="ChargesCount" type="Label" parent="Header/water"]
+offset_left = 630.0
+offset_top = -310.0
+offset_right = 1422.0
+offset_bottom = 230.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ha6ov")
+theme_override_font_sizes/font_size = 450
+text = "0 / 5"
+
+[node name="Footer" type="Control" parent="."]
+custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -216.0
+offset_right = 32.0
+offset_bottom = -216.0
+grow_vertical = 0
+
+[node name="plant" type="Node2D" parent="Footer"]
 scale = Vector2(0.2, 0.2)
-metadata/_edit_group_ = true
 
-[node name="sprite" type="Sprite2D" parent="CanvasGroup/plant"]
-position = Vector2(460, 475)
+[node name="sprite" type="Sprite2D" parent="Footer/plant"]
+position = Vector2(455, 481)
 texture = ExtResource("1_itinc")
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": false,
+"layer_section": false,
+"slice_section": false
+}
 
-[node name="Text-wrapper" type="Sprite2D" parent="CanvasGroup/plant"]
+[node name="Text-wrapper" type="Sprite2D" parent="Footer/plant"]
 position = Vector2(785, 775)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_g6bpl")
 
-[node name="Q" type="Label" parent="CanvasGroup/plant/Text-wrapper"]
+[node name="Q" type="Label" parent="Footer/plant/Text-wrapper"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -47,21 +118,20 @@ text = "Q"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="weed" type="Node2D" parent="CanvasGroup"]
-position = Vector2(250, 870)
+[node name="weed" type="Node2D" parent="Footer"]
+position = Vector2(258, 2.08165e-12)
 scale = Vector2(0.2, 0.2)
-metadata/_edit_group_ = true
 
-[node name="sprite" type="Sprite2D" parent="CanvasGroup/weed"]
+[node name="sprite" type="Sprite2D" parent="Footer/weed"]
 position = Vector2(455, 481)
 texture = ExtResource("1_ob66n")
 
-[node name="Text-wrapper" type="Sprite2D" parent="CanvasGroup/weed"]
+[node name="Text-wrapper" type="Sprite2D" parent="Footer/weed"]
 position = Vector2(785, 775)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_g6bpl")
 
-[node name="W" type="Label" parent="CanvasGroup/weed/Text-wrapper"]
+[node name="W" type="Label" parent="Footer/weed/Text-wrapper"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -82,31 +152,20 @@ text = "W"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ChargesCount" type="Label" parent="CanvasGroup/weed"]
-offset_left = 390.0
-offset_top = -280.0
-offset_right = 509.0
-offset_bottom = 116.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_ha6ov")
-theme_override_font_sizes/font_size = 330
-text = "0"
-
-[node name="water" type="Node2D" parent="CanvasGroup"]
-position = Vector2(460, 870)
+[node name="water" type="Node2D" parent="Footer"]
+position = Vector2(516, 2.08165e-12)
 scale = Vector2(0.2, 0.2)
-metadata/_edit_group_ = true
 
-[node name="sprite" type="Sprite2D" parent="CanvasGroup/water"]
+[node name="sprite" type="Sprite2D" parent="Footer/water"]
 position = Vector2(455, 481)
 texture = ExtResource("3_1r50j")
 
-[node name="Text-wrapper" type="Sprite2D" parent="CanvasGroup/water"]
+[node name="Text-wrapper" type="Sprite2D" parent="Footer/water"]
 position = Vector2(785, 775)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_g6bpl")
 
-[node name="E" type="Label" parent="CanvasGroup/water/Text-wrapper"]
+[node name="E" type="Label" parent="Footer/water/Text-wrapper"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
