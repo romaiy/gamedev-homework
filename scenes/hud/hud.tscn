@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ddc30ltvi7iru"]
+[gd_scene load_steps=11 format=3 uid="uid://ddc30ltvi7iru"]
 
 [ext_resource type="Texture2D" uid="uid://decxtvnot8h2g" path="res://assets/icons/plant.png" id="1_itinc"]
 [ext_resource type="Texture2D" uid="uid://d3l6mtf65dv47" path="res://assets/icons/weed.png" id="1_ob66n"]
@@ -9,6 +9,7 @@
 [ext_resource type="FontFile" uid="uid://yyihm3blh2ec" path="res://assets/fonts/Kurochkalapkoi.ttf" id="3_ha6ov"]
 [ext_resource type="Texture2D" uid="uid://c700bvk6xe2rw" path="res://assets/icons/small-weed.png" id="3_yy330"]
 [ext_resource type="Texture2D" uid="uid://dfmi1yb5lnd6c" path="res://assets/icons/small-water.png" id="4_2dq35"]
+[ext_resource type="Texture2D" uid="uid://blmsdl26rhi0c" path="res://assets/icons/get-water.png" id="10_avsf4"]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_wvdvv")
@@ -119,7 +120,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="weed" type="Node2D" parent="Footer"]
-position = Vector2(258, 2.08165e-12)
+position = Vector2(226, 2.08165e-12)
 scale = Vector2(0.2, 0.2)
 
 [node name="sprite" type="Sprite2D" parent="Footer/weed"]
@@ -153,7 +154,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="water" type="Node2D" parent="Footer"]
-position = Vector2(516, 2.08165e-12)
+position = Vector2(452, 2.08165e-12)
 scale = Vector2(0.2, 0.2)
 
 [node name="sprite" type="Sprite2D" parent="Footer/water"]
@@ -185,3 +186,35 @@ theme_override_font_sizes/font_size = 330
 text = "E"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Aside" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Node2D" type="Node2D" parent="Aside"]
+position = Vector2(-95.7367, -10.5135)
+scale = Vector2(0.13, 0.13)
+
+[node name="TextureButton" type="TextureButton" parent="Aside/Node2D"]
+offset_left = -146.949
+offset_top = -14.4066
+offset_right = 933.051
+offset_bottom = 1065.59
+texture_normal = ExtResource("10_avsf4")
+
+[node name="Label" type="Label" parent="Aside/Node2D/TextureButton"]
+offset_left = -11.5255
+offset_top = 703.052
+offset_right = 1728.47
+offset_bottom = 1183.05
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ha6ov")
+theme_override_font_sizes/font_size = 250
+text = "Набрать воды"
+
+[connection signal="pressed" from="Aside/Node2D/TextureButton" to="." method="_on_texture_button_pressed"]

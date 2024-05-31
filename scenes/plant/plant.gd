@@ -12,6 +12,7 @@ var total_cycles: int
 var current_cycle: int = 0
 var growth_timer: Timer
 var id: int
+var is_harvest: bool
 
 # Конструктор
 func _init(
@@ -22,6 +23,7 @@ func _init(
 	self.pos_y = pos_y
 	self.growth_cycle_duration = growth_cycle_duration
 	self.total_cycles = total_cycles
+	self.is_harvest = false
 	
 	# Создание таймера
 	growth_timer = Timer.new()
@@ -36,8 +38,8 @@ func _init(
 
 func _draw() -> void:
 	draw_rect(
-		Rect2(Vector2(self.pos_x, self.pos_y), Main.cell_size), 
-		Main.growth_cycle_colors[current_cycle]
+		Rect2(Vector2(self.pos_x, self.pos_y) + Vector2(0, 2), Main.correction_cell_size), 
+		'#fff' if self.is_harvest else Main.growth_cycle_colors[current_cycle]
 	)
 
 # Обработчик таймера
@@ -60,6 +62,12 @@ func water():
 	else:
 		print("Plant does not need more water")
 		
+func harvest():
+	self.is_harvest = true
+	queue_redraw()
+		
 func get_cycles():
 	return {'current': current_cycle, 'total': self.total_cycles}
 
+func  get_coords():
+	return Vector2(self.pos_x, self.pos_y)

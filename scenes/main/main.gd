@@ -1,14 +1,16 @@
 extends Node2D
 
-const grid_size = Vector2(320, 320)
+const grid_size = Vector2(1472, 768)
 const cell_size = Vector2(32, 32)
 
-const srv = Vector2(Main.cell_size.x, 0) # screen-right-vector
-const sdv = Vector2(0, Main.cell_size.y)
+const correction_cell_size = cell_size - Vector2(2, 2)
+
+const srv = Vector2(cell_size.x, 0) # screen-right-vector
+const sdv = Vector2(0, cell_size.y)
 
 const cell_amount = Vector2(grid_size.x / cell_size.x, grid_size.y / cell_size.y)
 
-const grid_offset = Vector2(800, 352)
+const grid_offset = Vector2(256, 96)
 
 const action_colors = {
 	'plant': '#009632',
@@ -51,3 +53,4 @@ func _draw() -> void:
 
 func cell2pixel(cell:Vector2):
 	return srv*cell.x + sdv*cell.y
+
